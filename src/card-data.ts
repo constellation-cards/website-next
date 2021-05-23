@@ -1,24 +1,57 @@
-const fs = require("fs"),
-  path = require("path"),
-  yaml = require("js-yaml");
+import * as fs from 'fs';
+import * as path from 'path';
+import * as yaml from 'js-yaml'
 
-import { concat, filter, has, map, partition, reduce, unnest } from "ramda";
+import {
+  concat,
+  filter,
+  has,
+  includes,
+  isEmpty,
+  map,
+  mergeDeepRight,
+  partition,
+  pathOr,
+  reduce,
+  uniq,
+  unnest
+} from "ramda";
+
+import slug from "slug";
 
 export interface ConstellationCardFace {
-  name?: string;
-  tags?: string[];
-  desc?: string;
-  prompts?: string[];
-  rule?: string;
+  name: string;
+  tags: string[];
+  desc: string;
+  prompts: string[];
+  rule: string;
 }
 
 export interface ConstellationCard {
   front: ConstellationCardFace;
   back: ConstellationCardFace;
-  qty?: number;
+  name: string;
+  slug: string;
+  qty: number;
 }
 
-const tagIconMapping: Record<string,string> = {
+const defaultCardFace: ConstellationCardFace = {
+  name: "",
+  tags: [],
+  desc: "",
+  prompts: [],
+  rule: ""
+};
+
+const defaultCard: ConstellationCard = {
+  front: defaultCardFace,
+  back: defaultCardFace,
+  name: "",
+  slug: "",
+  qty: 1
+};
+
+const tagIconMapping: Record<string, string> = {
   front: "arrow-up-circle.png",
   back: "arrow-down-circle.png",
   character: "star.png",
@@ -61,7 +94,7 @@ function getCardPaths(dir: string): string[] {
  * Return an array of cards
  * @param {*} dir
  */
-function getCardData(dir: string): ConstellationCard[] {
+function getCardData(dir: string): object[] {
   const filepaths = getCardPaths(dir);
   const filecontent = map(
     (filepath) => fs.readFileSync(filepath, "utf8").toString(),
@@ -72,10 +105,43 @@ function getCardData(dir: string): ConstellationCard[] {
   return carddata as ConstellationCard[];
 }
 
-export const cardData = getCardData(path.resolve(process.cwd(), 'card-data'))
+function refineCard(card: object): ConstellationCard {
+  const newCard = mergeDeepRight(defaultCard, card);
+  if (isEmpty(newCard.name)) {
+    newCard.name =
+      newCard.front.name === newCard.back.name
+        ? newCard.front.name
+        : `${newCard.front.name} / ${newCard.back.name}`;
+  }
+  newCard.slug = slug(newCard.name);
+  return newCard;
+}
+
+function refineCards(cardData: object[]) {
+  return map(refineCard, cardData);
+}
+
+function allCardsWithTag(tag: string, cards: ConstellationCard[]) {
+  return filter(
+    (card) =>
+      includes(tag, pathOr([], ["front", "tags"], card)) ||
+      includes(tag, pathOr([], ["back", "tags"], card)),
+    cards
+  );
+}
+
+function allTags(cards: ConstellationCard[]) {
+  const getTags = (side: string) =>
+    unnest(map((card) => pathOr([], [side, "tags"], card), cards));
+  return uniq(concat(getTags("front"), getTags("back")));
+}
+
+const rawCardData = getCardData(path.resolve(process.cwd(), "card-data"));
+export const cards = refineCards(rawCardData);
 
 module.exports = {
-  cardData,
-  getCardData,
+  cards,
+  allCardsWithTag,
+  allTags,
   iconForTag
 };
