@@ -10,7 +10,13 @@
   },
   "dependencies": {
     "next": "10.2.0",
+    "ramda": "^0.27.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/ramda": "^0.27.40",
+    "lint-staged": "^11.0.0",
+    "prettier": "2.3.0"
   }
 }
