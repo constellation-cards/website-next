@@ -1,0 +1,19 @@
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.face {
+    width: 50%;
+}
