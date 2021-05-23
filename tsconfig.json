@@ -31,7 +31,8 @@
   },
   "include": [
     "card-data/**/*",
-    "pages/**/*"
+    "pages/**/*",
+    "src/**/*"
   ],
   "exclude": [
     "node_modules"
