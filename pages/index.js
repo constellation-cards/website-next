@@ -52,7 +52,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        Powered by DigitalOcean
+        Powered by DigitalOcean Apps
       </footer>
     </div>
   )
