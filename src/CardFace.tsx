@@ -14,9 +14,9 @@ export default function Card({card, face}: {card: ConstellationCard, face: Const
             {map(tagLink, face.tags)}
           </small>
         </p>
-        <p>{face.desc}</p>
+        {face.desc.split('\n').map(para => <p key={para}>{para}</p>)}
         <ul>
-            {map(prompt => <li>{prompt}</li>, face.prompts)}
+            {map(prompt => <li key={prompt}>{prompt}</li>, face.prompts)}
         </ul>
         <em>{face.rule}</em>
     </div>
