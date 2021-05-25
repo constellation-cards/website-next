@@ -36,6 +36,10 @@ export default function OneCard({
           cards
         )}
       </main>
+
+      <footer>
+        <a href="/">Home</a>
+      </footer>
     </div>
   );
 }
@@ -62,6 +66,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
+      tag,
       cards: matchingCards
     },
     notFound: matchingCards.length === 0

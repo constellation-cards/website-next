@@ -19,6 +19,10 @@ export default function OneCard({ card }: { card: ConstellationCard }) {
       <main className={styles.main}>
         <Card card={card} />
       </main>
+
+      <footer>
+        <a href="/">Home</a>
+      </footer>
     </div>
   );
 }

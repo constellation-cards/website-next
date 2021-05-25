@@ -24,7 +24,7 @@ export default function Home({
           <>
             <h3>{key}</h3>
             <ul>
-              {groupedCards[key].map(card => <li>{card.name}</li>)}
+              {groupedCards[key].map(card => <li key={card.slug}><a href={`/cards/${card.slug}`}>{card.name}</a></li>)}
             </ul>
           </>
         )}

@@ -7,8 +7,8 @@ const styles = require('../styles/CardPage.module.css')
 export default function Card({card}: {card: ConstellationCard}) {
   return (
     <div className={styles.card}>
-        <CardFace face={card.front} />
-        <CardFace face={card.back} />
+        <CardFace card={card} face={card.front} />
+        <CardFace card={card} face={card.back} />
     </div>
   );
 }
