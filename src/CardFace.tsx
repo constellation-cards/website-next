@@ -1,7 +1,7 @@
 import { map } from "ramda";
 import type { ConstellationCardFace } from "../src/card-data";
 
-import styles from '../styles/CardPage.module.css'
+const styles = require('../styles/CardPage.module.css')
 
 export default function Card({face}: {face: ConstellationCardFace}) {
   return (

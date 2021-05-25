@@ -4,7 +4,7 @@ import { ConstellationCard } from "../src/card-data";
 
 import Card from '../src/Card'
 
-import styles from '../styles/CardPage.module.css'
+const styles = require('../styles/CardPage.module.css')
 
 export default function AllCards({cards}: {cards: ConstellationCard[]}) {
   return (
