@@ -16,8 +16,8 @@
       - oracle
       - emotion
     rule: Discard and shuffle into related cards
-- back: *emotion-hidden
-  front:
+- front: *emotion-hidden
+  back:
     <<: *emotion-revealed
     name: Ecstacy
     desc: >
@@ -26,8 +26,8 @@
       With Vigilance: yields Optimism.
       
       With Admiration: yields Love.
-- back: *emotion-hidden
-  front:
+- front: *emotion-hidden
+  back:
     <<: *emotion-revealed
     name: Admiration
     desc: >
@@ -36,8 +36,8 @@
       With Ecstacy: yields Love.
       
       With Terror: yields Submission.
-- back: *emotion-hidden
-  front:
+- front: *emotion-hidden
+  back:
     <<: *emotion-revealed
     name: Terror
     desc: >
@@ -46,8 +46,8 @@
       With Admiration: yields Submission.
       
       With Amazement: yields Awe.
-- back: *emotion-hidden
-  front:
+- front: *emotion-hidden
+  back:
     <<: *emotion-revealed
     name: Amazement
     desc: >
@@ -56,8 +56,8 @@
       With Terror: yields Awe.
       
       With Grief: yields Disapproval.
-- back: *emotion-hidden
-  front:
+- front: *emotion-hidden
+  back:
     <<: *emotion-revealed
     name: Grief
     desc: >
@@ -66,8 +66,8 @@
       With Amazement: yields Disapproval.
       
       With Loathing: yields Remorse.
-- back: *emotion-hidden
-  front:
+- front: *emotion-hidden
+  back:
     <<: *emotion-revealed
     name: Loathing
     desc: >
@@ -76,8 +76,8 @@
       With Grief: yields Remorse.
       
       With Rage: yields Contempt.
-- back: *emotion-hidden
-  front:
+- front: *emotion-hidden
+  back:
     <<: *emotion-revealed
     name: Rage
     desc: >
@@ -86,8 +86,8 @@
       With Loathing: yields Contempt.
       
       With Vigilance: yields Aggressiveness.
-- back: *emotion-hidden
-  front:
+- front: *emotion-hidden
+  back:
     <<: *emotion-revealed
     name: Vigilance
     desc: >
