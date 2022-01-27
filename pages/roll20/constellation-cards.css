@@ -1,0 +1,45 @@
+.repcontainer[data-groupname=repeating_cards] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: normal;
+  align-items: normal;
+  align-content: normal;
+}
+
+.repcontainer[data-groupname=repeating_cards] .repitem {
+  width: 25%;
+  min-width: 3.1in;
+  min-height: 5.1in;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+}
+
+.itemcontrol {
+  z-index: 999;
+}
+
+.card {
+  background: white;
+  box-shadow: 1px 1px 3px rgba(0,0,0,.25);
+  width: 3in;
+  max-width: 3in;
+  height: 5in;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+}
+
+.card .input-header {
+  width: 100%;
+}
+
+.card .input-description {
+  width: 97%;
+}
